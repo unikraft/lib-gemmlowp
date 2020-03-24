@@ -1,0 +1,60 @@
+#  libtensorflow-lite Makefile.uk
+#
+#  Authors: George Muraru <murarugeorgec@gmail.com>
+#
+#  Copyright (c) 2020, Politehnica University of Bucharest. All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#  3. Neither the name of the copyright holder nor the names of its
+#     contributors may be used to endorse or promote products derived from
+#     this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+#  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+#  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY OF SUCH DAMAGE.
+#
+#  THIS HEADER MAY NOT BE EXTRACTED OR MODIFIED IN ANY WAY.
+#
+
+$(eval $(call addlib_s,libgemmlowp,$(CONFIG_LIBGEMMLOWP)))
+
+################################################################################
+# Sources
+################################################################################
+LIBGEMMLOWP_COMMIT=12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3
+LIBGEMMLOWP_URL=https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/gemmlowp/archive/${LIBGEMMLOWP_COMMIT}.zip
+$(eval $(call fetch,libgemmlowp,$(LIBGEMMLOWP_URL)))
+
+################################################################################
+# Helpers
+################################################################################
+LIBGEMMLOWP_SUBDIR=gemmlowp-$(LIBGEMMLOWP_COMMIT)
+LIBGEMMLOWP_SRC = $(LIBGEMMLOWP_ORIGIN)/$(LIBGEMMLOWP_SUBDIR)
+
+################################################################################
+# Library includes
+################################################################################
+CINCLUDES-$(CONFIG_LIBGEMMLOWP) += -I$(LIBGEMMLOWP_SRC)
+
+CXXINCLUDES-$(CONFIG_LIBGEMMLOWP) += -I$(LIBGEMMLOWP_SRC)
+
+################################################################################
+# Library sources
+################################################################################
+LIBGEMMLOWP_SRCS-y += $(LIBGEMMLOWP_SRC)/eight_bit_int_gemm/eight_bit_int_gemm.cc
