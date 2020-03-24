@@ -1,0 +1,9 @@
+menuconfig LIBGEMMLOWP
+    bool "gemmlowp - general matrix multiplication low precision"
+    select LIBCXX
+    select LIBNEWLIBC
+    select LIBPOSIX_SYSINFO
+    select LIBPTHREAD_EMBEDDED
+    select LIBCOMPILTER_RT
+    select LIBCOMPILER_RT_ATOMIC
+    default n
