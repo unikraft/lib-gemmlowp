@@ -51,8 +51,14 @@ LIBGEMMLOWP_SRC = $(LIBGEMMLOWP_ORIGIN)/$(LIBGEMMLOWP_SUBDIR)
 # Library includes
 ################################################################################
 CINCLUDES-$(CONFIG_LIBGEMMLOWP) += -I$(LIBGEMMLOWP_SRC)
-
 CXXINCLUDES-$(CONFIG_LIBGEMMLOWP) += -I$(LIBGEMMLOWP_SRC)
+
+################################################################################
+# Global flags
+################################################################################
+LIBGEMMLOWP_SUPPRESS_FLAGS += -Wno-sign-compare
+LIBGEMMLOWP_CFLAGS-y += $(LIBGEMMLOWP_SUPPRESS_FLAGS)
+LIBGEMMLOWP_CXXFLAGS-y += $(LIBGEMMLOWP_SUPPRESS_FLAGS)
 
 ################################################################################
 # Library sources
