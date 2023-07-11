@@ -1,0 +1,6 @@
+name        := "gemmlowp"
+description := "Low-precision matrix multiplication."
+gitrepo     := "https://github.com/google/gemmlowp.git"
+homepage    := "https://github.com/google/gemmlowp/"
+version     := 12fed0c sha256:ab3873363ed63cd0090bd4e59dc29e63ecce9d84e66093083e5fda2cac14e74b https://github.com/google/gemmlowp/archive/12fed0c.tar.gz
+license     := "Apache-2.0"
