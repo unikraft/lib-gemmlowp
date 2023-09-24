@@ -35,8 +35,8 @@ $(eval $(call addlib_s,libgemmlowp,$(CONFIG_LIBGEMMLOWP)))
 ################################################################################
 # Sources
 ################################################################################
-LIBGEMMLOWP_COMMIT=12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3
-LIBGEMMLOWP_URL=https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/gemmlowp/archive/${LIBGEMMLOWP_COMMIT}.zip
+LIBGEMMLOWP_COMMIT=08e4bb339e34017a0835269d4a37c4ea04d15a69
+LIBGEMMLOWP_URL=https://github.com/google/gemmlowp/archive/${LIBGEMMLOWP_COMMIT}.zip
 $(eval $(call fetch,libgemmlowp,$(LIBGEMMLOWP_URL)))
 
 ################################################################################
